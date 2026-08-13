@@ -196,13 +196,13 @@ The GitHub Actions workflow automatically:
 
 1. Create a Docker Hub account
 2. Add GitHub Secrets to your repository:
-   - `DOCKER_USERNAME`: Your Docker Hub username
-   - `DOCKER_PASSWORD`: Your Docker Hub access token (or password)
+   - `DOCKERHUB_USERNAME`: Your Docker Hub username
+   - `DOCKERHUB_TOKEN`: A Docker Hub access token
 
 3. Merge/push to `main` branch to trigger the workflow
 
-The image-publish job is skipped until both secrets are configured, so CI checks can
-still pass without attempting an unauthenticated Docker Hub login.
+The image-publish job runs on pushes to `main`. If either secret is missing, its
+login and publish steps are skipped; configure both secrets before submitting.
 
 ## Database
 
