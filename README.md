@@ -201,6 +201,9 @@ The GitHub Actions workflow automatically:
 
 3. Merge/push to `main` branch to trigger the workflow
 
+The image-publish job is skipped until both secrets are configured, so CI checks can
+still pass without attempting an unauthenticated Docker Hub login.
+
 ## Database
 
 The application uses SQLite for development and can be configured to use PostgreSQL for production.
