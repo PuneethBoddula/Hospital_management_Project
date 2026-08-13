@@ -1,7 +1,6 @@
 """Tests for appointment API endpoints."""
 
 from datetime import datetime, timedelta
-import pytest
 
 
 class TestAppointmentAPI:

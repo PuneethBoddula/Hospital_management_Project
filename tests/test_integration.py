@@ -1,6 +1,5 @@
 """System and integration tests."""
 
-import pytest
 
 
 class TestHealthCheck:

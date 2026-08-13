@@ -1,8 +1,10 @@
 """Appointment model."""
 
-from sqlalchemy import Column, Integer, DateTime, ForeignKey
-from sqlalchemy.orm import relationship
 from datetime import datetime
+
+from sqlalchemy import Column, DateTime, ForeignKey, Integer
+from sqlalchemy.orm import relationship
+
 from hospital_management_project.database import Base
 
 

@@ -1,9 +1,15 @@
 """Main FastAPI application."""
 
 import os
+
 from fastapi import FastAPI
-from hospital_management_project.routers import patient_router, doctor_router, appointment_router
+
 from hospital_management_project.database import Base, engine
+from hospital_management_project.routers import (
+    appointment_router,
+    doctor_router,
+    patient_router,
+)
 
 # Create tables only if not running tests
 if not os.environ.get("TESTING"):
@@ -30,4 +36,8 @@ async def health_check():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+    # Get host from environment variable, default to 0.0.0.0 for Docker
+    host = os.environ.get("HOST", "0.0.0.0")  # nosec B104
+    port = int(os.environ.get("PORT", "8000"))
+    uvicorn.run(app, host=host, port=port)

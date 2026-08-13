@@ -1,17 +1,23 @@
 """Test configuration and fixtures."""
 
 import os
-import pytest
 from datetime import datetime, timedelta
+
+import pytest
 
 # Set testing mode before importing anything else
 os.environ["TESTING"] = "1"
 
 # Now import the models and database from the project
-from hospital_management_project.database import Base, get_db, engine, SessionLocal
-from hospital_management_project.models import Patient, Doctor, Appointment  # noqa: F401
-from hospital_management_project.main import app
 from fastapi.testclient import TestClient
+
+from hospital_management_project.database import Base, SessionLocal, engine, get_db
+from hospital_management_project.main import app
+from hospital_management_project.models import (
+    Appointment,
+    Doctor,
+    Patient,
+)
 
 
 @pytest.fixture(scope="function")

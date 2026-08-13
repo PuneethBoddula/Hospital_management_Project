@@ -1,8 +1,8 @@
 """Pydantic schemas for request/response validation."""
 
-from pydantic import BaseModel, EmailStr
 from datetime import datetime
-from typing import Optional, List
+
+from pydantic import BaseModel, EmailStr
 
 
 # Patient Schemas
@@ -16,8 +16,6 @@ class PatientBase(BaseModel):
 
 class PatientCreate(PatientBase):
     """Patient creation schema."""
-
-    pass
 
 
 class PatientResponse(PatientBase):
@@ -33,7 +31,7 @@ class PatientResponse(PatientBase):
 class PatientWithAppointments(PatientResponse):
     """Patient response with appointments."""
 
-    appointments: List["AppointmentResponse"] = []
+    appointments: list[AppointmentResponse] = []
 
 
 # Doctor Schemas
@@ -46,8 +44,6 @@ class DoctorBase(BaseModel):
 
 class DoctorCreate(DoctorBase):
     """Doctor creation schema."""
-
-    pass
 
 
 class DoctorResponse(DoctorBase):
@@ -63,7 +59,7 @@ class DoctorResponse(DoctorBase):
 class DoctorWithAppointments(DoctorResponse):
     """Doctor response with appointments."""
 
-    appointments: List["AppointmentResponse"] = []
+    appointments: list[AppointmentResponse] = []
 
 
 # Appointment Schemas
@@ -78,8 +74,6 @@ class AppointmentBase(BaseModel):
 
 class AppointmentCreate(AppointmentBase):
     """Appointment creation schema."""
-
-    pass
 
 
 class AppointmentResponse(AppointmentBase):

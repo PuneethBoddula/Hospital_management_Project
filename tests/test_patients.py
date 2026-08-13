@@ -1,7 +1,5 @@
 """Tests for patient API endpoints."""
 
-from datetime import datetime, timedelta
-import pytest
 
 
 class TestPatientAPI:

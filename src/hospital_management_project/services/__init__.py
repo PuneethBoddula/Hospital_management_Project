@@ -1,10 +1,12 @@
 """Service layer for business logic."""
 
-from sqlalchemy.orm import Session
-from sqlalchemy import and_
 from datetime import datetime
+
 from fastapi import HTTPException, status
-from hospital_management_project.models import Patient, Doctor, Appointment
+from sqlalchemy import and_
+from sqlalchemy.orm import Session
+
+from hospital_management_project.models import Appointment, Doctor, Patient
 
 
 class PatientService:
@@ -89,7 +91,7 @@ class AppointmentService:
         appointment_start: datetime,
         appointment_end: datetime,
         db: Session,
-        exclude_appointment_id: int = None
+        exclude_appointment_id: int | None = None,
     ) -> bool:
         """
         Check if a new appointment overlaps with existing appointments for the same doctor.

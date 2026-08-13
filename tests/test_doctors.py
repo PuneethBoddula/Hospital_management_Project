@@ -1,6 +1,5 @@
 """Tests for doctor API endpoints."""
 
-import pytest
 
 
 class TestDoctorAPI:

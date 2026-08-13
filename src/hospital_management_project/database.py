@@ -1,8 +1,9 @@
 """Database configuration and session management."""
 
+from collections.abc import Generator
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
-from typing import Generator
 
 # Database URL - using SQLite for development, can be changed to PostgreSQL
 DATABASE_URL = "sqlite:///./test.db"
