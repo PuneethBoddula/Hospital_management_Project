@@ -80,7 +80,7 @@ class TestAppointmentAPI:
             "appointment_end": end.isoformat()
         }
         response = client.post("/appointments", json=appointment_data)
-        assert response.setatus_code == 400
+        assert response.status_code == 400
         assert "start time must be before end time" in response.json()["detail"]
 
     def test_get_appointment_by_id_success(self, client, sample_appointment):
