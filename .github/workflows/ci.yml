@@ -52,7 +52,8 @@ jobs:
         run: pytest tests/ --cov=src/hospital_management_project --cov-report=term-missing --cov-report=xml -v
 
       - name: Check coverage is at least 85%
-        run: python -c "import xml.etree.ElementTree as ET; root = ET.parse('coverage.xml').getroot(); coverage = float(root.get('line-rate')) * 100; print(f'Coverage: {coverage:.2f}%'); exit(0 if coverage >= 85 else 1)"
+        run: |
+          python -c "import xml.etree.ElementTree as ET; root = ET.parse('coverage.xml').getroot(); coverage = float(root.get('line-rate')) * 100; print(f'Coverage: {coverage:.2f}%'); exit(0 if coverage >= 85 else 1)"
 
   security:
     name: Security Check (Bandit)
