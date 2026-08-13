@@ -1,6 +1,6 @@
 """Tests for appointment API endpoints."""
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 
 class TestAppointmentAPI:
@@ -22,7 +22,7 @@ class TestAppointmentAPI:
 
     def test_create_appointment_success(self, client, sample_patient, sample_doctor):
         """Test successful appointment creation."""
-        start = (datetime.utcnow() + timedelta(days=1)).replace(microsecond=0)
+        start = (datetime.now(UTC) + timedelta(days=1)).replace(microsecond=0)
         end = start + timedelta(hours=1)
         
         appointment_data = {
@@ -40,7 +40,7 @@ class TestAppointmentAPI:
 
     def test_create_appointment_nonexistent_patient(self, client, sample_doctor):
         """Test appointment creation with non-existent patient."""
-        start = (datetime.utcnow() + timedelta(days=1)).replace(microsecond=0)
+        start = (datetime.now(UTC) + timedelta(days=1)).replace(microsecond=0)
         end = start + timedelta(hours=1)
         
         appointment_data = {
@@ -55,7 +55,7 @@ class TestAppointmentAPI:
 
     def test_create_appointment_nonexistent_doctor(self, client, sample_patient):
         """Test appointment creation with non-existent doctor."""
-        start = (datetime.utcnow() + timedelta(days=1)).replace(microsecond=0)
+        start = (datetime.now(UTC) + timedelta(days=1)).replace(microsecond=0)
         end = start + timedelta(hours=1)
         
         appointment_data = {
@@ -70,7 +70,7 @@ class TestAppointmentAPI:
 
     def test_create_appointment_invalid_times(self, client, sample_patient, sample_doctor):
         """Test appointment creation with invalid time range."""
-        start = (datetime.utcnow() + timedelta(days=1)).replace(microsecond=0)
+        start = (datetime.now(UTC) + timedelta(days=1)).replace(microsecond=0)
         end = start - timedelta(hours=1)  # End before start
         
         appointment_data = {
@@ -80,7 +80,7 @@ class TestAppointmentAPI:
             "appointment_end": end.isoformat()
         }
         response = client.post("/appointments", json=appointment_data)
-        assert response.status_code == 400
+        assert response.setatus_code == 400
         assert "start time must be before end time" in response.json()["detail"]
 
     def test_get_appointment_by_id_success(self, client, sample_appointment):

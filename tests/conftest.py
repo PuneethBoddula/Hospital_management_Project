@@ -1,7 +1,7 @@
 """Test configuration and fixtures."""
 
 import os
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 import pytest
 
@@ -80,7 +80,7 @@ def sample_doctor(db_session):
 @pytest.fixture
 def sample_appointment(db_session, sample_patient, sample_doctor):
     """Create a sample appointment for testing."""
-    start = datetime.utcnow().replace(microsecond=0)
+    start = datetime.now(UTC).replace(microsecond=0)
     end = start + timedelta(hours=1)
     
     appointment = Appointment(
