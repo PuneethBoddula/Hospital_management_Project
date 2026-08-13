@@ -207,14 +207,14 @@ class TestAppointmentOverlap:
             {
                 "patient_id": sample_patient.id,
                 "doctor_id": sample_doctor.id,
-                "appointment_start": (datetime.utcnow() + timedelta(hours=1)).replace(microsecond=0).isoformat(),
-                "appointment_end": (datetime.utcnow() + timedelta(hours=2)).replace(microsecond=0).isoformat(),
+                "appointment_start": (datetime.now(UTC) + timedelta(hours=1)).replace(microsecond=0).isoformat(),
+                "appointment_end": (datetime.now(UTC) + timedelta(hours=2)).replace(microsecond=0).isoformat(),
             },
             {
                 "patient_id": sample_patient.id,
                 "doctor_id": sample_doctor.id,
-                "appointment_start": (datetime.utcnow() + timedelta(hours=3)).replace(microsecond=0).isoformat(),
-                "appointment_end": (datetime.utcnow() + timedelta(hours=4)).replace(microsecond=0).isoformat(),
+                "appointment_start": (datetime.now(UTC) + timedelta(hours=3)).replace(microsecond=0).isoformat(),
+                "appointment_end": (datetime.now(UTC) + timedelta(hours=4)).replace(microsecond=0).isoformat(),
             },
         ]
         

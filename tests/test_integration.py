@@ -37,8 +37,8 @@ class TestIntegration:
         doctor_id = doctor_response.json()["id"]
 
         # Create appointment
-        from datetime import datetime, timedelta
-        start = (datetime.utcnow() + timedelta(days=1)).replace(microsecond=0)
+        from datetime import UTC, datetime, timedelta
+        start = (datetime.now(UTC) + timedelta(days=1)).replace(microsecond=0)
         end = start + timedelta(hours=1)
         
         appointment_data = {
@@ -93,9 +93,9 @@ class TestIntegration:
         assert len(client.get("/doctors").json()) == 2
 
         # Create appointments
-        from datetime import datetime, timedelta
+        from datetime import UTC, datetime, timedelta
         for i in range(4):
-            start = (datetime.utcnow() + timedelta(hours=i*2)).replace(microsecond=0)
+            start = (datetime.now(UTC) + timedelta(hours=i*2)).replace(microsecond=0)
             end = start + timedelta(hours=1)
             
             response = client.post("/appointments", json={
