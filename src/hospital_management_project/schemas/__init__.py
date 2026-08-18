@@ -1,8 +1,10 @@
 """Pydantic schemas for request/response validation."""
 
+from __future__ import annotations
+
 from datetime import datetime
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 
 
 # Patient Schemas
@@ -31,7 +33,7 @@ class PatientResponse(PatientBase):
 class PatientWithAppointments(PatientResponse):
     """Patient response with appointments."""
 
-    appointments: list[AppointmentResponse] = []
+    appointments: list[AppointmentResponse] = Field(default_factory=list)
 
 
 # Doctor Schemas
@@ -59,7 +61,7 @@ class DoctorResponse(DoctorBase):
 class DoctorWithAppointments(DoctorResponse):
     """Doctor response with appointments."""
 
-    appointments: list[AppointmentResponse] = []
+    appointments: list[AppointmentResponse] = Field(default_factory=list)
 
 
 # Appointment Schemas
