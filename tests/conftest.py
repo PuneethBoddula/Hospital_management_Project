@@ -11,8 +11,8 @@ os.environ["TESTING"] = "1"
 # Now import the models and database from the project
 from fastapi.testclient import TestClient
 
-from hospital_management_project.database import Base, SessionLocal, engine, get_db
 from app.main import app
+from hospital_management_project.database import Base, SessionLocal, engine, get_db
 from hospital_management_project.models import (
     Appointment,
     Doctor,
