@@ -12,7 +12,7 @@ os.environ["TESTING"] = "1"
 from fastapi.testclient import TestClient
 
 from hospital_management_project.database import Base, SessionLocal, engine, get_db
-from hospital_management_project.main import app
+from app.main import app
 from hospital_management_project.models import (
     Appointment,
     Doctor,
